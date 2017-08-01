@@ -21,7 +21,11 @@ class Status
         if ($lockedUntil === null) {
             $this->lockedUntil = $lockedUntil;
         } else {
-            $lockedTime = \DateTimeImmutable::createFromFormat(DATE_ATOM, $lockedUntil->format(DATE_ATOM));
+            $lockedTime = \DateTimeImmutable::createFromFormat(
+                DATE_ATOM,
+                $lockedUntil->format(DATE_ATOM),
+                new \DateTimeZone('UTC')
+            );
             $this->lockedUntil = $lockedTime;
         }
 
