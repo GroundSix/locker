@@ -14,5 +14,17 @@
     ],
     "require": {
         "php": "^7.1"
+    },
+
+    "autoload": {
+        "psr-4": {
+            "GroundSix\\Locker\\": "src"
+        }
+    },
+
+    "autoload-dev": {
+        "psr-4": {
+            "Groundsix\\Password\\Tests\\": "tests"
+        }
     }
 }
