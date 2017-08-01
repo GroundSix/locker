@@ -35,4 +35,19 @@ class LockerDriverTest extends TestCase
         $status = $this->driver->getURLStatus('test');
         $this->assertTrue($status->isLocked(), 'Locking a URL should mark it locked');
     }
+
+    public function testUnlockUrl()
+    {
+        // Lock the path
+        $this->driver->lockURL('test', 'anthony', 60);
+        $status = $this->driver->getURLStatus('test');
+        $this->assertTrue($status->isLocked());
+
+        $this->driver->lockURL('test2', 'anthony', 60);
+
+
+        $this->driver->unlockURL('test');
+        $this->assertFalse($this->driver->getURLStatus('test')->isLocked(), 'It should unlock test');
+        $this->assertTrue($this->driver->getURLStatus('test2')->isLocked(), 'It should leave test2 locked');
+    }
 }

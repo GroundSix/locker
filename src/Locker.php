@@ -8,6 +8,11 @@ class Locker
     /** @var LockerDriver $driver */
     private $driver;
 
+    /**
+     * Creates a new Locker instance
+     *
+     * @param LockerDriver $driver The instance of the LockerDriver to use to check the state of locked pages
+     */
     public function __construct(LockerDriver $driver)
     {
         $this->driver = $driver;
@@ -46,5 +51,15 @@ class Locker
     public function lock(string $url, string $lockedBy, int $lockFor): void
     {
         $this->driver->lockURL($url, $lockedBy, $lockFor);
+    }
+
+    /**
+     * Unlocks the given URL
+     *
+     * @param string $url The URL to unlock
+     */
+    public function unlock(string $url): void
+    {
+        $this->driver->unlockURL($url);
     }
 }

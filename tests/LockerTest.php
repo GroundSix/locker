@@ -44,4 +44,13 @@ class LockerTest extends TestCase
             'james has overridden the lock on "test"'
         );
     }
+
+    public function testUnlock()
+    {
+        $this->locker->lock('test', 'anthony', 60);
+        $this->assertTrue($this->locker->isLocked('test'), 'Anthony has locked "test"');
+
+        $this->locker->unlock('test');
+        $this->assertFalse($this->locker->isLocked('test'), 'Anthony has unlocked "test"');
+    }
 }

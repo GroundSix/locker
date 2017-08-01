@@ -20,7 +20,7 @@ class StatusTest extends TestCase
     {
         $status = new Status(
             'test',
-            new \DateTime(time()+60),
+            \DateTime::createFromFormat('U', time()+60, new \DateTimeZone('UTC')),
             'anthony'
         );
 

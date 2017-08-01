@@ -21,6 +21,11 @@ class ArrayDriver implements LockerDriver
         ];
     }
 
+    public function unlockURL(string $url): void
+    {
+        unset($this->urls[$url]);
+    }
+
     public function getURLStatus(string $url): Status
     {
         $status = $this->urls[$url] ?? null;
